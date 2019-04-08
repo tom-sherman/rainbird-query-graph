@@ -46,7 +46,7 @@ export class QueryGraph extends Component {
           style={{ height: `${this.state.height}px` }}
         >
           <RelativeSize initialSize={15} />
-          <Dagre edgesep={30} ranksep={edges.length}>
+          <Dagre edgesep={30} ranksep={nodes.length * 2}>
             <NOverlap gridSize={50} maxIterations={100} />
           </Dagre>
         </Sigma>
