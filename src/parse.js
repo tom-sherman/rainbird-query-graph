@@ -3,20 +3,21 @@ import sax from "@msitko/sax";
 export function getGraph(rblang) {
   const doc = parseDocument(rblang);
 
-  const nodes = doc.relationships.map(rel => rel.name);
+  const nodes = new Set();
   const edges = [];
 
   for (const rule of doc.rules) {
-    // nodes.add(rule.type);
+    nodes.add(rule.type);
     for (const condition of rule.conditions) {
-      edgeTargetsFromCondition(condition).forEach(target =>
+      edgeTargetsFromCondition(condition).forEach(target => {
+        nodes.add(target)
         edges.push({
           source: rule.type,
           target: target,
           id: "e" + edges.length,
           type: "arrow"
         })
-      );
+      });
     }
   }
 
