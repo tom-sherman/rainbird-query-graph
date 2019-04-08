@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { QueryGraph } from "./QueryGraph";
-// import "./App.css";
+import "./App.css";
 
 class App extends Component {
   state = {
@@ -15,10 +15,10 @@ class App extends Component {
     return (
       <>
         <textarea
+          className='rblang-input'
           value={this.state.input}
           onChange={this.handleInputChange}
           placeholder={"Paste RBLang here..."}
-          style={{position: 'absolute'}}
         />
         <QueryGraph code={this.state.input} />
       </>
