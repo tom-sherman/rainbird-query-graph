@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import {
   Sigma,
-  RandomizeNodePositions,
   RelativeSize,
   NOverlap,
 } from "react-sigma";
@@ -41,8 +40,7 @@ export class QueryGraph extends Component {
           style={{ height: `${this.state.height}px` }}
         >
           <RelativeSize initialSize={15} />
-          <RandomizeNodePositions />
-          <Dagre edgesep={30}>
+          <Dagre edgesep={30} ranksep={100}>
             <NOverlap gridSize={50} maxIterations={100} />
           </Dagre>
         </Sigma>
