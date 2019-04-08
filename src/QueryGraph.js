@@ -3,11 +3,9 @@ import {
   Sigma,
   RandomizeNodePositions,
   RelativeSize,
-  ForceAtlas2,
   NOverlap,
-  ReactSigmaLayoutPlugin
 } from "react-sigma";
-import ForceLink from 'react-sigma/lib/ForceLink'
+import Dagre from 'react-sigma/lib/Dagre'
 import debounce from "debounce";
 import { getGraph } from "./parse";
 
@@ -44,9 +42,9 @@ export class QueryGraph extends Component {
         >
           <RelativeSize initialSize={15} />
           <RandomizeNodePositions />
-          <ForceLink nodeSiblingsAngleMin={1} alignNodeSiblings={true}>
+          <Dagre edgesep={30}>
             <NOverlap gridSize={50} maxIterations={100} />
-          </ForceLink>
+          </Dagre>
         </Sigma>
       </div>
     );
