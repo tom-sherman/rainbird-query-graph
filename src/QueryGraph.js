@@ -1,12 +1,18 @@
 import React, { Component } from "react";
-import {
-  Sigma,
-  RelativeSize,
-  NOverlap,
-} from "react-sigma";
-import Dagre from 'react-sigma/lib/Dagre'
+import { Sigma, RelativeSize, NOverlap } from "react-sigma";
+import Dagre from "react-sigma/lib/Dagre";
 import debounce from "debounce";
 import { getGraph } from "./parse";
+
+const sigmaSettings = {
+  drawEdges: true,
+  clone: false,
+  defaultEdgeColor: "#727272",
+  edgeColor: "default",
+  labelThreshold: 8,
+  minNodeSize: 2,
+  sideMargin: 50
+};
 
 export class QueryGraph extends Component {
   state = {
@@ -33,10 +39,10 @@ export class QueryGraph extends Component {
     console.log(nodes, edges);
 
     return (
-      <div className={'query-graph'}>
+      <div className={"query-graph"}>
         <Sigma
           graph={{ nodes, edges }}
-          settings={{ drawEdges: true, clone: false }}
+          settings={sigmaSettings}
           style={{ height: `${this.state.height}px` }}
         >
           <RelativeSize initialSize={15} />
