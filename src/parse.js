@@ -53,9 +53,9 @@ export function parseDocument(rblang) {
     }
   }
 
-  parser.onerror = function(err) {
-    throw err
-  }
+  // parser.onerror = function(err) {
+  //   throw err
+  // }
 
   parser.write(rblang).end()
 
