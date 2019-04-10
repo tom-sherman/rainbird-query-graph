@@ -1,45 +1,45 @@
-import React, { Component } from "react";
-import { Sigma, RelativeSize, NOverlap } from "react-sigma";
-import Dagre from "react-sigma/lib/Dagre";
-import debounce from "debounce";
-import { getGraph } from "./parse";
+import React, { Component } from 'react'
+import { Sigma, RelativeSize, NOverlap } from 'react-sigma'
+import Dagre from 'react-sigma/lib/Dagre'
+import debounce from 'debounce'
+import { getGraph } from './get-graph'
 
 const sigmaSettings = {
   drawEdges: true,
   clone: false,
-  defaultEdgeColor: "#727272",
-  edgeColor: "default",
+  defaultEdgeColor: '#727272',
+  edgeColor: 'default',
   labelThreshold: 8,
   minNodeSize: 2,
   sideMargin: 50
-};
+}
 
 export class QueryGraph extends Component {
   state = {
     height: window.innerHeight
-  };
+  }
 
   componentDidMount() {
-    this.updateDimensions();
-    window.addEventListener("resize", this.updateDimensions);
+    this.updateDimensions()
+    window.addEventListener('resize', this.updateDimensions)
   }
 
   updateDimensions = debounce(() =>
     this.setState({
       height: window.innerHeight
     })
-  );
+  )
 
   render() {
     if (!this.props.code) {
-      return null;
+      return null
     }
 
-    const { nodes, edges } = getGraph(this.props.code);
-    console.log(nodes, edges);
+    const { nodes, edges } = getGraph(this.props.code)
+    console.log(nodes, edges)
 
     return (
-      <div className={"query-graph"}>
+      <div className={'query-graph'}>
         <Sigma
           graph={{ nodes, edges }}
           settings={sigmaSettings}
@@ -51,6 +51,6 @@ export class QueryGraph extends Component {
           </Dagre>
         </Sigma>
       </div>
-    );
+    )
   }
 }
