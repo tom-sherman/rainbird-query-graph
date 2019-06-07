@@ -16,7 +16,7 @@ Here's a small example to demonstrate the above concept.
 
 The simplest of maps, hello world, would produce the following query graph:
 
-[[https://github.com/tom-sherman/rainbird-query-graph/blob/master/graph-example.svg|alt=Example graph]]
+https://github.com/tom-sherman/rainbird-query-graph/blob/master/graph-example.svg
 
 We can see that our top level node "speaks", references two relationships: "born in" and "has national language". This is because the rule that is written on "speaks" uses both of the those relationships.
 
